@@ -41,7 +41,7 @@ with app.app_context():
         traceback.print_exc()
 
 # Load the full model package (model + encoders)
-with open("static/models/rfr_wristwatch_price_model.pkl", "rb") as f:
+with open("../static/models/rfr_wristwatch_price_model.pkl", "rb") as f:
    prediction_model_data = pickle.load(f)
 
 model = prediction_model_data["model"]
@@ -52,7 +52,7 @@ mlb_functions = prediction_model_data["mlb_funkce"]
 ohe = prediction_model_data["ohe"]
 
 # Load the second model package (model + encoders)
-with open("static/models/rfc_wristwatch_usage_model_v3.pkl", "rb") as f:
+with open("../static/models/rfc_wristwatch_usage_model_v3.pkl", "rb") as f:
     usage_model_data = pickle.load(f)
 
 usage_model = usage_model_data["model"]
@@ -65,7 +65,7 @@ usage_mlb_usage = usage_model_data["mlb_pouziti"]
 
 # Build for rendering form choices (optional, static for now)
 # Load the attribute choices from the JSON file
-with open("static/files/multiple_choice_features_cleaned.json", "r", encoding="utf-8") as file:
+with open("../static/files/multiple_choice_features_cleaned.json", "r", encoding="utf-8") as file:
    attribute_choices = json.load(file)
 
 @app.route("/", methods=["GET"])
@@ -301,7 +301,7 @@ def predict():
         predicted_usage = []
         traceback.print_exc()
     return render_template(
-            "index.html",
+        "index.html",
             numeric_features=numeric_features,
             attribute_choices=attribute_choices,
             form_data=request.form,
