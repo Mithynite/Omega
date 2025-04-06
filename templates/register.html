@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrace</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="static/images/Logo.png" alt="Logo">
+    </div>
+    <div class="container">
+        <h2>Registrace</h2>
+        <form action="{{ url_for('register') }}" method="post">
+            <div class="input-container">
+                <input name="username" placeholder="Uživatelské jméno" type="text" required/>
+            </div>
+            <div class="input-container">
+                <input name="email" placeholder="Email" type="email" required/>
+            </div>
+            <div class="input-container">
+                <input name="password" placeholder="Heslo" type="password" required/>
+            </div>
+            <div class="input-container">
+                <input name="confirm_password" placeholder="Potvrdit heslo" type="password" required/>
+            </div>
+            <button class="btn" type="submit">REGISTROVAT SE</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <p>Již máte účet? <a class="login-link" href="login">Přihlásit se</a></p>
+    </div>
+</body>
+</html>

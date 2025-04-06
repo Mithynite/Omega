@@ -1,0 +1,250 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+.container {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    width: 15%;
+    min-width: 300px;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #111;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.input-container {
+}
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #6e00ff;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+}
+.input-container input::placeholder {
+    color: #6e00ff;
+}
+.btn {
+    background-color: #6e00ff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn:hover {
+    background-color: #5a00cc;
+}
+.login-link, .register-link {
+    color: #00aaff;
+    text-decoration: none;
+}
+.login-link:hover {
+    text-decoration: underline;
+}
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.logo img {
+    width: 200px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10%;
+}
+
+header {
+    width: 97%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 16px;
+    gap: 16px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    position: absolute;
+}
+
+header button {
+    background-color: #6b46c1;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+header button:hover {
+    background-color: #553c9a;
+}
+
+.form-wrapper {
+    padding: 40px;
+    width: 90%;
+}
+
+.form-wrapper h1 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.form-wrapper form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.group {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.group:nth-child(1) {
+    border-bottom: 2px solid #6b46c1;
+}
+.group:nth-child(2) {
+    border-bottom: 2px solid #6b46c1;
+}
+
+.group h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #6b46c1;
+}
+
+.group .attributes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.attribute-pair {
+    display: flex;
+    flex-direction: column;
+}
+
+.attribute-pair label {
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.attribute-pair select,
+.attribute-pair input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #6b46c1;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+}
+.attribute-pair select[multiple] {
+    height: auto;
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.form-wrapper button[type="submit"] {
+    background-color: #6b46c1;
+    color: #fff;
+    padding: 10px 20px;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-wrapper button[type="submit"]:hover {
+    background-color: #553c9a;
+}
+
+.result-box {
+    width: 30%;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #222;
+    border: 3px solid #553c9a;
+    border-radius: 10px;
+}
+
+.result {
+    font-size: 1.25em;
+    color: white;
+}
+
+.result.error {
+    color: #ff4d4d;
+}
+
+.paragraph-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 90%;
+    margin: 20px 0;
+}
+
+.paragraph {
+    padding: 30px;
+    background-color: #111;
+    border-radius: 10px;
+}
+
+.paragraph:nth-child(odd) {
+    grid-column: 1;
+}
+
+.paragraph:nth-child(even) {
+    grid-column: 2;
+}
+@media (max-width: 768px) {
+    .paragraph-container {
+        grid-template-columns: 1fr;
+    }
+
+    .paragraph:nth-child(odd),
+    .paragraph:nth-child(even) {
+        grid-column: 1;
+    }
+    .logo {
+        display: none;
+    }
+
+    h1 {
+        margin-top: 100px; /* Adjust this value as needed */
+        text-align: center;
+    }
+
+    header {
+    justify-content: center;
+}
+}

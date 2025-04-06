@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>O Nás</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="static/images/Logo.png" alt="Logo">
+            </div>
+            <form action="/" method="GET" style="display: inline;">
+                <button type="submit">AI</button>
+            </form>
+            <form action="/aboutus" method="GET" style="display: inline;">
+                <button type="submit">O NÁS</button>
+            </form>
+            <form action="/contact" method="GET" style="display: inline;">
+                <button type="submit">KONTAKT</button>
+            </form>
+            <form action="/logout" method="POST" style="display: inline;">
+                <button type="submit">ODHLÁSIT SE</button>
+            </form>
+        </header>
+        <h1>O Nás</h1>
+        <div class="paragraph-container">
+            <div class="paragraph">
+                <h2>O co se jedná?</h2>
+                <p>
+                    Tato stránka slouží jako školní projekt s označením Omega.
+                    Autorem je student Jakub Hofman, student SPŠE Ječná.
+                    Projekt slouží jako ukázka strojového učení v praxi.
+                </p>
+            </div>
+            <div class="paragraph">
+                <h2>K čemu stránka slouží?</h2>
+                <p>
+                    Po vytvoření účtu si můžete zadat své vysněné hodinky a zjistit o
+                    nich něco, co by Vám mohlo usnadnit rozhodování při výběru.
+                    Značka, Rozměr pouzdra či rovnou Barva? Toto je pouze zlomek
+                    všech specifikací, které Vám pomohou zjistit cenu a vhodné
+                    použití Vašich hodinek!
+                </p>
+            </div>
+            <div class="paragraph">
+                <h2>Zdroje</h2>
+                <p>
+                    Data o hodinkách byly brány ze stránek prodejce
+                    <a href="https://www.helveti.cz" target="_blank">Helveti.cz</a>.
+                </p>
+            </div>
+            <div class="paragraph">
+                <h2>Vývoj</h2>
+                <p>
+                    K natrénování AI modelů byl použit jazyk Python a knihovna Scikit-learn, konkrétně
+                    Random Forest Regressor pro predikci ceny a
+                    Random Forest Classifier pro určení vhodného použití hodinek.
+                    Pro tvorbu této stránky jsem použil jazyk Python společně s frameworkem Flask a k tomu HTML.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
