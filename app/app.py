@@ -71,8 +71,7 @@ try:
     usage_categorical_features = usage_model_data["categorical_features"]
     usage_mlb_functions = usage_model_data["mlb_funkce"]
     usage_mlb_usage = usage_model_data["mlb_pouziti"]
-except:
-    except FileNotFoundError as e:
+except FileNotFoundError as e:
     print(f"File not found: {e}")
     usage_model = None
     usage_expected_features = []
