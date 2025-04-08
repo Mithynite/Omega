@@ -6,7 +6,7 @@ import pickle
 import traceback
 import logging
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 app.secret_key = 'key'  # Replace with a secure secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://wristwatcher:id_i78dIG!f5---@138.3.255.133:3306/WristWatch_AI'
 
@@ -40,33 +40,55 @@ with app.app_context():
         print("Failed to connect to DB.")
         traceback.print_exc()
 
-# Load the full model package (model + encoders)
-with open("../static/models/rfr_wristwatch_price_model.pkl", "rb") as f:
-   prediction_model_data = pickle.load(f)
+try:
+    # Load the full model package (model + encoders)
+    with open("../static/models/rfr_wristwatch_price_model.pkl", "rb") as f:
+       prediction_model_data = pickle.load(f)
+    
+    model = prediction_model_data["model"]
+    expected_features = prediction_model_data["features"]
+    numeric_features = prediction_model_data["numeric_features"]
+    categorical_features = prediction_model_data["categorical_features"]
+    mlb_functions = prediction_model_data["mlb_funkce"]
+    ohe = prediction_model_data["ohe"]
+except FileNotFoundError as e:
+    print(f"File not found: {e}")
+    model = None
+    expected_features = []
+    numeric_features = []
+    categorical_features = []
+    mlb_functions = None
+    ohe = None
 
-model = prediction_model_data["model"]
-expected_features = prediction_model_data["features"]
-numeric_features = prediction_model_data["numeric_features"]
-categorical_features = prediction_model_data["categorical_features"]
-mlb_functions = prediction_model_data["mlb_funkce"]
-ohe = prediction_model_data["ohe"]
-
-# Load the second model package (model + encoders)
-with open("../static/models/rfc_wristwatch_usage_model_v3.pkl", "rb") as f:
-    usage_model_data = pickle.load(f)
-
-usage_model = usage_model_data["model"]
-usage_expected_features = usage_model_data["features"]
-usage_numeric_features = usage_model_data["numeric_features"]
-usage_categorical_features = usage_model_data["categorical_features"]
-usage_mlb_functions = usage_model_data["mlb_funkce"]
-usage_mlb_usage = usage_model_data["mlb_pouziti"]
-#usage_ohe = usage_model_data["ohe"]
+try:
+    # Load the second model package (model + encoders)
+    with open("../static/models/rfc_wristwatch_usage_model_v3.pkl", "rb") as f:
+        usage_model_data = pickle.load(f)
+    
+    usage_model = usage_model_data["model"]
+    usage_expected_features = usage_model_data["features"]
+    usage_numeric_features = usage_model_data["numeric_features"]
+    usage_categorical_features = usage_model_data["categorical_features"]
+    usage_mlb_functions = usage_model_data["mlb_funkce"]
+    usage_mlb_usage = usage_model_data["mlb_pouziti"]
+except:
+    except FileNotFoundError as e:
+    print(f"File not found: {e}")
+    usage_model = None
+    usage_expected_features = []
+    usage_numeric_features = []
+    usage_categorical_features = []
+    usage_mlb_functions = None
+    usage_mlb_usage = None
 
 # Build for rendering form choices (optional, static for now)
 # Load the attribute choices from the JSON file
-with open("../static/files/multiple_choice_features_cleaned.json", "r", encoding="utf-8") as file:
-   attribute_choices = json.load(file)
+try:
+    with open("../static/files/multiple_choice_features_cleaned.json", "r", encoding="utf-8") as file:
+        attribute_choices = json.load(file)
+except FileNotFoundError as e:
+    print(f"File not found: {e}")
+    attribute_choices = {}
 
 @app.route("/", methods=["GET"])
 def index():
